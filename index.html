@@ -10,22 +10,29 @@
 
 <body>
     <h1>Hej!</h1>
+    <p>Gissa på ett tal mellan 1 och 10</p>
+    <input type="text" name="guess">
+
 <script>
-    let num = 5;
-    let guess = 0;
 
-    while(guess != num)
-        guess = prompt("Gissa på ett tal:");
+    let num = Math.round(Math.random() * 10);
+    let el = document.querySelector('input');
+    let p = document.querySelector('p');
+    let guesses = 0;
 
-        if (guess == num) {
-            alert("Du gissade rätt")
-        } else if (guess > num) {
-            alert("Gissningen är för stor")
-        } else if (guess < num) {
-            alert("Gissningen är för liten")
+    el.addEventListener('change', function() {
+        guesses += 1;
+        if (el.value == num) {
+            p.textContent = 'Du gissade rätt med ' + guesses + ' gissningar';
+        } else if (el.value > num) {
+            p.textContent = 'Gissningen är för stor';
+        } else if (el.value < num) {
+            p.textContent = 'Gissningen är för liten';
         } else {
-            alert("Någonting gick snett")
+            p.textContent = 'Någonting gick snett';
         }
+        el.value = '';
+    });
 
 </script>
 
