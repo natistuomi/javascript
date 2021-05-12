@@ -24,6 +24,8 @@
         guesses += 1;
         if (el.value == num) {
             p.textContent = 'Du gissade rätt med ' + guesses + ' gissningar';
+            num = Math.round(Math.random() * 10);
+            guesses = 0;
         } else if (el.value > num) {
             p.textContent = 'Gissningen är för stor';
         } else if (el.value < num) {
